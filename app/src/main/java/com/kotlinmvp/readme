@@ -1,0 +1,18 @@
+M：数据层
+V：Activity，Fragment
+P：逻辑层
+View依赖Presenter
+Presenter依赖Model
+
+ 优点：
+ 剥离了View和Controller，解决了复杂的业务Activity过于庞大的问题。
+ View与Model隔离，View换了，Model不受影响，Model换其他的数据源，View层也不受影响。
+ 一个View可以连接多个Model，有些Model可以复用。
+
+ 缺点：
+ 1、更新UI需要注意线程，UI控件是否已经销毁
+ 假如我们去请求一个数据，这个时候请求是耗时的，数据回来了，
+ 可是界面已经被用户关掉了，数据回来以后，我们的判断UI控件是否还存在。
+ 2、如果多个地方使用到同一个Presenter，可能会存在一些用不上的接口。
+
+ MVP UI驱动开发
